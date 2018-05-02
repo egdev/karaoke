@@ -1,0 +1,16 @@
+<%= javascript_tag defer: 'defer' do -%>
+  var f; 
+  function reloadPage()
+  {
+	  $.ajax({
+		type:"GET",
+		url: "<%= playlist_items_path(playlist_id: @playlist.id, :format => :js) %>",
+		data: "",
+	  }).done(function() { f = setTimeout(reloadPage, 2000); });
+  }
+  f = setTimeout(reloadPage, 5000);
+<% end -%>
+<h1>PLAYLIST <%= h @playlist.name %></h1>
+<div id="playlist_items">
+	<%= render 'items', items: @items %>
+</div>

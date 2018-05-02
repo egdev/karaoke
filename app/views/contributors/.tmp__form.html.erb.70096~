@@ -1,0 +1,20 @@
+<%= form_with(model: contributor, local: false, id: 'create_contributor_form') do |form| %>
+  <% if contributor.errors.any? %>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2>Action impossible :</h2>
+
+      <ul>
+      <% contributor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <%= form.submit contributor.new_record? ? "ajouter le chanteur" : "valider les changements", class: "btn btn-primary" %>
+<% end %>

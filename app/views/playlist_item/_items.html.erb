@@ -1,0 +1,17 @@
+<% @items.each do |item| %>
+<div id="item_<%= item.id %>" class="alert <%= @items.first == item ? "alert-danger" : "alert-success" %>">
+	<div class="row">
+		<% unless (actions ||= nil).nil? %>
+			<div class="col-md-1"><%= link_to '', playlist_item_watched_path(playlist_id: @playlist.id, item_id: item.id, format: :js), method: :patch, data: { confirm: 'Chanson chantée ?' }, remote: true, class: "glyphicon glyphicon-eye-close" %></div>
+		<% end %>
+		<div class="col-md-6">
+			<%= link_to(h(item.song.title), playlist_item_path(@playlist.id, item.id), :target => "_blank") %>
+		</div>
+		<div class="col-md-4">	
+			<% item.contributors.each do |contributor| %>
+				<span class="label label-primary"><strong><%= h contributor.name %></strong></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+<% end %>

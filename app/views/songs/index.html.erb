@@ -1,0 +1,25 @@
+<h1>Chansons</h1>
+<%= link_to 'Nouvelle chanson', new_song_path, class: "label label-info" %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Durée</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.title %></td>
+        <td><%= song.duration %>&nbsp;</td>
+        <td>
+			<%= link_to 'éditer', edit_song_path(song), class: "glyphicon glyphicon-edit text-success" %>
+			<%= link_to 'effacer', song, method: :delete, data: { confirm: 'Etes-vou sûr ?' }, class: "glyphicon glyphicon-trash text-danger" %>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nouvelle chanson', new_song_path, class: "label label-info" %>

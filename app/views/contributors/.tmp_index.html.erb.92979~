@@ -1,0 +1,23 @@
+<h1>Chanteurs</h1>
+<%= link_to 'Nouveau chanteur', new_contributor_path, class: "label label-info" %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom ou surnom</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contributors.each do |contributor| %>
+      <tr>
+        <td><%= contributor.name %></td>
+        <td>
+			<%= link_to 'éditer', edit_contributor_path(contributor), class: "glyphicon glyphicon-edit text-success" %>
+        	<%= link_to 'supprimer', contributor, method: :delete, data: { confirm: 'Etes-vous sûr ?' }, class: "glyphicon glyphicon-trash text-danger" %>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nouveau chanteur', new_contributor_path, class: "label label-info" %>

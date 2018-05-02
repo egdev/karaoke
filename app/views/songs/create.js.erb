@@ -1,0 +1,9 @@
+<% if @song.valid? %>
+	$("#dialog-form").dialog("close");
+	$("#playlist_item_song_id").append($("<option></option>").attr("value", '<%= @song.id %>').text("<%= j @song.title.html_safe %>").attr('selected', true));
+	$('#playlist_item_song_id').trigger('chosen:updated');
+<% else %>
+<% if @song.errors.any? %>
+alert('<%= j @song.errors.full_messages.collect { |message| [ message ] }.join(", ") %>');
+<% end %>
+<% end %> 

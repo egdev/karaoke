@@ -1,0 +1,5 @@
+<% if @item.nil? %>
+	alert('Chanson introuvable ! Déjà chantée ?');
+<% else %>
+	$("#playlist_items").html('<%= j render "items", items: @items, actions: true %>');
+<% end %>

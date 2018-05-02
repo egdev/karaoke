@@ -1,0 +1,32 @@
+fr:
+    activerecord:
+        errors:
+            models:
+                playlist_item:
+                    attributes:
+                        song:
+                            required: est oligatoire !    
+                        contributors:
+                            too_short: au moins 1 contributeur
+                song:
+                    attributes:
+                        title:
+                            blank: est obligatoire
+                contributor:
+                    attributes:
+                        name:
+                            blank: est obligatoire
+                            invalid: est invalide
+                            taken: déjà pris
+        model:
+            song: Chanson
+        attributes:
+            song:
+                title: Titre
+                duration: Durée                
+            contributor:
+                name: Nom ou surnom
+            playlist_item:
+                contributors: Participants
+                song: Chanson
+                

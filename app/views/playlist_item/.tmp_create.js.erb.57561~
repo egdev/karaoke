@@ -1,0 +1,20 @@
+<% if @watched_song %>
+	alert('ATTENTION : la chanson a déjà été jouée !');
+<% elsif !@item.valid? %>
+	<% if @item.errors.any? %>
+		alert('<%= j @item.errors.full_messages.collect { |message| [ message ] }.join(", ") %>');
+	<% end %>	
+<% else %>
+	$("#playlist_items").html('<%= j render "items", items: @items %>');
+	<% if @contributors_added %>
+		alert('La chanson est déjà dans la playlist le ou les participants ont été ajoutés');
+		<% unless @current_item.nil? %>
+			$("#item_<%=@current_item.id%>").effect('highlight', {color:"#ffcc00"}, 2000);			
+		<% end %>
+	<% else %>
+		alert('Chanson ajoutée à la playlist');
+		$("#item_<%=@item.id%>").effect('highlight', {color:"#ffcc00"}, 2000);
+	<% end %>
+	$("#playlist_item_song_id").val('').trigger('chosen:updated');
+	$('#playlist_item_contributor_ids').val('').trigger('chosen:updated')
+<% end %> 

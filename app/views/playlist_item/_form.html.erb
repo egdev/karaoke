@@ -1,0 +1,28 @@
+<%= form_with(model: item, local: false, class: "form-group", id: "create_item_form") do |form| %>
+  <% if item.errors.any? %>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2>ATTENTION !</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <%= form.label :song %>
+    <%= form.select :song_id, Song.order(:title).all.collect { |s| [ s.title, s.id ] }, {:include_blank => true}, class: "chosen-select form-control", data: { placeholder: "Choisir la chanson" } %>
+	<%= button_tag "nouvelle chanson", type: "button", id: "create_song", data: { url:  new_song_path(format: :js)  }, class: "label label-info" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label :contributors %>
+	<%= form.select :contributor_ids, Contributor.all.collect { |c| [ c.name, c.id ] }, {:include_hidden => false}, { multiple: true, class: "form-control", data: { placeholder: "Choisir les chanteurs" } }  %>
+	<%= button_tag "nouveau participant", type: "button", id: "create_contributor", data: { url:  new_contributor_path(format: :js)  }, class: "label label-info" %>
+  </div>
+
+  <%= form.submit item.new_record? ? "ajouter à la playlist" : "valider les changements", class: "btn btn-primary" %>
+  
+<% end %>

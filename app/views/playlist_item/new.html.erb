@@ -1,0 +1,59 @@
+
+<%= javascript_tag defer: 'defer' do -%>
+$(function() {
+	$.ajaxSetup({
+	    headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+	});
+	
+	$('#playlist_item_contributor_ids').chosen({no_results_text: "Pas de résultats"});
+	$('#playlist_item_song_id').chosen({no_results_text: "Pas de résultats"});
+	
+	var dialog;
+	dialog = $( "#dialog-form" ).dialog({
+	      autoOpen: false,
+	      width: 'auto',
+	      modal: true,
+		  resizable: false,
+	      close: function() {
+	      }
+	    });
+	 
+		$('button[data-url]').button().on("click", function(e) {
+			var pos = { my: "left top", at: "left bottom", of: e }
+			
+			$('#dialog-form').load($(this).attr('data-url')).dialog("option", "position",pos).dialog('open');
+		});
+		
+	    $( "#playlist_items" ).sortable({
+			axis: 'y',
+			update: function(e, ui) {
+				$.ajax({
+			        url: $(this).data("url"),
+			        type: "PATCH",
+					dataType: "script",
+			        data: $(this).sortable('serialize'),
+			      });
+	  		}
+			}
+		);
+	    $( "#playlist_items" ).disableSelection();
+	});
+<% end %>
+<div id="dialog-form" title="Nouveau participant">
+ <%# render 'contributors/form', contributor: @contributor, local: false 
+%>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<h1>Ajouter une chanson à la playlist</h1>
+		<%= render 'form', item: @item %>
+	</div> 
+	<div class="col-md-8">
+		<h1>PLAYLIST <%= h @playlist.name %></h1>
+		<div id="playlist_items" data-url="<%=sort_playlist_items_path(@playlist.id)%>">
+			<%= render 'items', items: @items, actions: true %>
+		</div>
+		<% #render :template => '/playlist_item/index', layout: false 
+		%>
+	</div>
+</div>

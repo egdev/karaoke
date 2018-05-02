@@ -1,0 +1,9 @@
+<% if @contributor.valid? %>
+	$("#dialog-form").dialog("close");
+	$("#playlist_item_contributor_ids").append($("<option></option>").attr("value", '<%= @contributor.id %>').text("<%= j @contributor.name.html_safe %>").attr('selected', true));
+	$('#playlist_item_contributor_ids').trigger('chosen:updated');
+<% else %>
+<% if @contributor.errors.any? %>
+alert('<%= j @contributor.errors.full_messages.collect { |message| [ message ] }.join(", ") %>');
+<% end %>
+<% end %> 

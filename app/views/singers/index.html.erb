@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Interprètres</h1>
+<%= link_to 'Nouvel interprète', new_singer_path, class: "label label-info" %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @singers.each do |singer| %>
+      <tr>
+        <td><%= singer.name %></td>
+        <td>
+        	<%= link_to 'éditer', edit_singer_path(singer), class: "glyphicon glyphicon-edit text-success" %>
+        	<%= link_to 'supprimer', singer, method: :delete, data: { confirm: 'Etes-vous sûr ?' }, class: "glyphicon glyphicon-trash text-danger" %>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nouvel interprète', new_singer_path, class: "label label-info" %>
