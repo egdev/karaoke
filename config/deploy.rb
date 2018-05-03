@@ -26,6 +26,8 @@ set :puma_init_active_record, false  # Change to true if using ActiveRecord
 set :rvm_type, :user                     # Defaults to: :auto
 set :rvm_ruby_version, '2.5.0'      # Defaults to: 'default'
 
+set :default_env, { DISABLE_DATABASE_ENVIRONMENT_CHECK: true }
+
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
