@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
   gem 'capistrano-rails-db'
+  gem 'capistrano-rails-console', require: false
 end
 
 
