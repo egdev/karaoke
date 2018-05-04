@@ -47,6 +47,8 @@ gem 'chosen-rails'
 
 gem 'unicorn'
 
+gem 'friendly_id'
+
 #gem 'bootstrap'
 group :development do
   gem 'capistrano'

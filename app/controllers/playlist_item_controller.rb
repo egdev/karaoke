@@ -97,7 +97,7 @@ class PlaylistItemController < ApplicationController
   private
   
   def get_playlist
-    @playlist = Playlist.find(params[:playlist_id])
+    @playlist = Playlist.friendly.find(params[:playlist_id])
   end
 
   def playlist_item_params
