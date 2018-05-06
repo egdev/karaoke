@@ -17,7 +17,7 @@
 //= require jquery-ui/core
 //= require jquery-ui/widgets/dialog
 //= require jquery-ui/effect.all
-//= require jquery-ui/widgets/sortable
+//= require jquery-ui/widgets/sortable*/
 //= require chosen-jquery
 //= require bootstrap
 //= require_tree .

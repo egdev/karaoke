@@ -19,5 +19,7 @@
  *= require_self
  */
 $font-size-base: 20px;
+$chosen-sprite: image-url('chosen-sprite.png');
+$chosen-sprite-retina: image-url('chosen-sprite@2x.png');
 @import "bootstrap-sprockets";
 @import "bootstrap";

@@ -3,8 +3,8 @@ class Song < ApplicationRecord
 	
   validates :title, presence: true
   
-	def self.import
-    source_dir = "/mnt/d/Karaoké A jour sept 2015" 
+	def self.import(source_dir)
+    #source_dir = "/mnt/d/Karaoké A jour sept 2015" 
     i = 0
     Dir.entries(source_dir).each do |d|
       next if d == "." || d == ".."

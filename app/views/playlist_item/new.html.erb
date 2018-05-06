@@ -23,7 +23,8 @@ $(function() {
 			
 			$('#dialog-form').load($(this).attr('data-url')).dialog("option", "position",pos).dialog('open');
 		});
-		
+	
+	
 	    $( "#playlist_items" ).sortable({
 			axis: 'y',
 			update: function(e, ui) {
@@ -40,8 +41,6 @@ $(function() {
 	});
 <% end %>
 <div id="dialog-form" title="Nouveau participant">
- <%# render 'contributors/form', contributor: @contributor, local: false 
-%>
 </div>
 <div class="row">
 	<div class="col-md-4">
@@ -53,7 +52,5 @@ $(function() {
 		<div id="playlist_items" data-url="<%=sort_playlist_items_path(@playlist.id)%>">
 			<%= render 'items', items: @items, actions: true %>
 		</div>
-		<% #render :template => '/playlist_item/index', layout: false 
-		%>
 	</div>
 </div>
