@@ -2,7 +2,7 @@
 <div id="item_<%= item.id %>" class="alert <%= @items.first == item ? "alert-danger" : "alert-success" %>">
 	<div class="row">
 		<% unless (actions ||= nil).nil? %>
-			<div class="col-md-1"><%= link_to '', playlist_item_watched_path(playlist_id: @playlist.id, item_id: item.id, format: :js), method: :patch, data: { confirm: 'Chanson chantée ?' }, remote: true, class: "glyphicon glyphicon-eye-close" %></div>
+			<div class="col-md-1"><%= link_to '', playlist_item_watched_path(playlist_id: @playlist.id, item_id: item.id, format: :js), method: :patch, data: { confirm: 'Chanson chantée ?' }, remote: true, class: "glyphicon glyphicon-eye-close" %>&nbsp;<%= link_to '', playlist_item_path(playlist_id: @playlist.id, id: item.id, format: :js), method: :delete, data: { confirm: 'Supprimer la chanson ?' }, remote: true, class: "glyphicon glyphicon-trash" %></div>
 		<% end %>
 		<div class="col-md-6">
 			<%= link_to(h(item.song.title), playlist_item_path(@playlist.id, item.id), :target => "_blank") %>

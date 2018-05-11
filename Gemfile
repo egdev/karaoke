@@ -49,6 +49,8 @@ gem 'unicorn'
 
 gem 'friendly_id'
 
+gem 'seed_dump'
+
 #gem 'bootstrap'
 group :development do
   gem 'capistrano'

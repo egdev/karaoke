@@ -94,6 +94,19 @@ class PlaylistItemController < ApplicationController
     end
   end
 
+  def destroy
+    @item = @playlist.unwatched_items.find_by_id(params[:id])
+    unless @item.nil?
+      @item.destroy
+    end
+
+    @items = @playlist.unwatched_items.reload
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   private
   
   def get_playlist
