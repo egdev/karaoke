@@ -7,9 +7,10 @@
 		<div class="col-md-6">
 			<%= link_to(h(item.song.title), playlist_item_path(@playlist.id, item.id), :target => "_blank") %>
 		</div>
-		<div class="col-md-4">	
+		<div class="col-md-4 pull-right">	
 			<% item.contributors.each do |contributor| %>
-				<span class="label label-primary"><strong><%= h contributor.name %></strong></span>
+				<span class="label label-primary pull-right"><strong><%= h contributor.name %></strong></span>
+				<span class="pull-right">&nbsp;</span>
 			<% end %>
 		</div>
 	</div>
